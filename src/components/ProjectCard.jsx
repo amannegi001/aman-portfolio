@@ -1,8 +1,8 @@
 import React from 'react';
-import { Github, ExternalLink, Layers, CheckCircle2, Clock, Users } from 'lucide-react';
+import { Github, ExternalLink, Layers, CheckCircle2, Clock, Users, ArrowRight, Network, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export const ProjectCard = ({ project, index }) => {
+export const ProjectCard = ({ project, index, onViewArchitecture, hasArchitecture }) => {
   const isFeatured = project.featured;
 
   return (
@@ -22,7 +22,7 @@ export const ProjectCard = ({ project, index }) => {
         <div className="absolute top-0 right-0 w-96 h-96 bg-cyan/5 dark:bg-cyan/10 rounded-full blur-3xl pointer-events-none -z-10" />
       )}
 
-      {/* Top Meta Bar: Status / Badge & Links */}
+      {/* Top Meta Bar: Status / Badge & Actions */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div className="flex flex-wrap items-center gap-2">
           {/* Status Badge */}
@@ -45,20 +45,35 @@ export const ProjectCard = ({ project, index }) => {
           )}
         </div>
 
-        {/* Action Link (Repository) */}
-        {project.repositoryUrl && (
-          <a
-            href={project.repositoryUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View ${project.title} on GitHub`}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-navy-800 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-white/10 hover:border-cyan/40 hover:text-cyan-muted dark:hover:text-cyan transition-colors"
-          >
-            <Github size={14} />
-            <span>Repository</span>
-            <ExternalLink size={12} className="opacity-70" />
-          </a>
-        )}
+        {/* Action Buttons (Architecture CTA + Repository) */}
+        <div className="flex items-center gap-2">
+          {hasArchitecture && (
+            <button
+              type="button"
+              onClick={() => onViewArchitecture(project.id)}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-cyan text-navy-950 text-xs font-bold hover:bg-cyan-hover shadow-sm hover:shadow-glow-cyan-sm transition-all"
+              aria-label={`View interactive system architecture for ${project.title}`}
+            >
+              <Network size={14} />
+              <span>View Architecture</span>
+              <ArrowRight size={13} />
+            </button>
+          )}
+
+          {project.repositoryUrl && (
+            <a
+              href={project.repositoryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${project.title} on GitHub`}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-navy-800 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-white/10 hover:border-cyan/40 hover:text-cyan-muted dark:hover:text-cyan transition-colors"
+            >
+              <Github size={14} />
+              <span>Repository</span>
+              <ExternalLink size={12} className="opacity-70" />
+            </a>
+          )}
+        </div>
       </div>
 
       {/* Main Title & Tagline */}
@@ -78,10 +93,24 @@ export const ProjectCard = ({ project, index }) => {
 
       {/* Architecture Highlights Matrix */}
       <div className="mb-8">
-        <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-2">
-          <Layers size={14} className="text-cyan-muted dark:text-cyan" />
-          Key Architectural Modules & Implementation
-        </h4>
+        <div className="flex items-center justify-between mb-3">
+          <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+            <Layers size={14} className="text-cyan-muted dark:text-cyan" />
+            Key Architectural Modules & Implementation
+          </h4>
+
+          {hasArchitecture && (
+            <button
+              type="button"
+              onClick={() => onViewArchitecture(project.id)}
+              className="text-xs font-mono text-cyan-muted dark:text-cyan hover:underline hidden sm:inline-flex items-center gap-1"
+            >
+              <span>Explore Graph Mode</span>
+              <ArrowRight size={12} />
+            </button>
+          )}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
           {project.architectureHighlights.map((hl, idx) => (
             <div

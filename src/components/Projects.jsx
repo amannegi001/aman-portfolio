@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { projects } from '../data/portfolioData';
+import { architectures } from '../data/architectureData';
 import { ProjectCard } from './ProjectCard';
+import { ArchitectureModal } from './architecture/ArchitectureModal';
 
 export const Projects = () => {
+  const [selectedArchitectureProject, setSelectedArchitectureProject] = useState(null);
+
+  const handleOpenArchitecture = (projectId) => {
+    setSelectedArchitectureProject(projectId);
+  };
+
+  const handleCloseArchitecture = () => {
+    setSelectedArchitectureProject(null);
+  };
+
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-6xl mx-auto">
@@ -18,18 +30,33 @@ export const Projects = () => {
             Architected for scalability, security, and performance.
           </h2>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl">
-            Selected full-stack and systems projects demonstrating RESTful API development, state management, and real-time data handling.
+            Selected full-stack and systems projects demonstrating RESTful API development, state management, and real-time data handling. Click on <strong>View Architecture</strong> to explore interactive system diagrams.
           </p>
         </div>
 
         {/* Project List */}
         <div className="flex flex-col gap-8">
           {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              hasArchitecture={Boolean(architectures[project.id])}
+              onViewArchitecture={handleOpenArchitecture}
+            />
           ))}
         </div>
 
       </div>
+
+      {/* Interactive System Architecture Modal */}
+      {selectedArchitectureProject && (
+        <ArchitectureModal
+          projectId={selectedArchitectureProject}
+          isOpen={Boolean(selectedArchitectureProject)}
+          onClose={handleCloseArchitecture}
+        />
+      )}
     </section>
   );
 };
