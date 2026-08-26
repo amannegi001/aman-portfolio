@@ -128,13 +128,13 @@ export const architectures = {
       },
     ],
     edges: [
-      { from: "client", to: "gateway", label: "HTTPS / REST API Requests", animated: true },
-      { from: "gateway", to: "auth", label: "JWT Token Validation", animated: true },
-      { from: "gateway", to: "ai_engine", label: "Attempt Telemetry & Payloads", animated: true },
-      { from: "gateway", to: "database", label: "Mongoose Query Operations", animated: true },
-      { from: "ai_engine", to: "skill_gap", label: "Competency Output", animated: false },
-      { from: "gateway", to: "external_services", label: "Async Event Dispatch", animated: false },
-      { from: "ai_engine", to: "database", label: "Persist Mistake Patterns", animated: true },
+      { from: "client", fromAnchor: "bottom", to: "gateway", toAnchor: "top", label: "HTTPS / REST API Requests", animated: true },
+      { from: "gateway", fromAnchor: "bottom", to: "auth", toAnchor: "top", label: "JWT Token Validation", animated: true },
+      { from: "gateway", fromAnchor: "bottom", to: "ai_engine", toAnchor: "top", label: "Attempt Telemetry & Payloads", animated: true },
+      { from: "gateway", fromAnchor: "bottom", to: "database", toAnchor: "top", label: "Mongoose Query Operations", animated: true },
+      { from: "ai_engine", fromAnchor: "bottom", to: "skill_gap", toAnchor: "top", label: "Competency Output", animated: false },
+      { from: "gateway", fromAnchor: "bottom", to: "external_services", toAnchor: "top", label: "Async Event Dispatch", animated: false },
+      { from: "ai_engine", fromAnchor: "right", to: "database", toAnchor: "left", label: "Persist Mistake Patterns", animated: true },
     ],
     dataFlowSteps: [
       {

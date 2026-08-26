@@ -49,29 +49,31 @@ export const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="p-6 rounded-2xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 hover:border-cyan/40 transition-all duration-300 backdrop-blur-xl shadow-sm"
+              className="h-full"
             >
-              {/* Category Header */}
-              <div className="flex items-center gap-3 mb-5 pb-3 border-b border-slate-200 dark:border-white/10">
-                <div className="p-2 rounded-xl bg-slate-100 dark:bg-navy-800">
-                  {getCategoryIcon(cat.category)}
+              <div className="portfolio-card h-full p-6 rounded-2xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-cyan/30 backdrop-blur-xl shadow-sm">
+                {/* Category Header */}
+                <div className="flex items-center gap-3 mb-5 pb-3 border-b border-slate-200 dark:border-white/10">
+                  <div className="p-2 rounded-xl bg-slate-100 dark:bg-navy-800">
+                    {getCategoryIcon(cat.category)}
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight">
+                    {cat.category}
+                  </h3>
                 </div>
-                <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 tracking-tight">
-                  {cat.category}
-                </h3>
-              </div>
 
-              {/* Skill Badges */}
-              <div className="flex flex-wrap gap-2">
-                {cat.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 text-slate-800 dark:text-slate-200 text-xs font-mono font-medium border border-slate-200 dark:border-white/5 hover:border-cyan/40 hover:text-cyan-muted dark:hover:text-cyan transition-colors"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan" />
-                    {skill}
-                  </span>
-                ))}
+                {/* Skill Badges */}
+                <div className="flex flex-wrap gap-2">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-navy-950/80 text-slate-800 dark:text-slate-200 text-xs font-mono font-medium border border-slate-200 dark:border-white/5 hover:border-cyan/40 hover:text-cyan-muted dark:hover:text-cyan transition-colors"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan" />
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}

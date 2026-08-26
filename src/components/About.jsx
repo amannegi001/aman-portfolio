@@ -31,7 +31,7 @@ export const About = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-7 flex flex-col gap-6"
           >
-            <div className="p-6 sm:p-8 rounded-2xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 backdrop-blur-xl shadow-sm">
+            <div className="portfolio-card p-6 sm:p-8 rounded-2xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-cyan/30 backdrop-blur-xl shadow-sm">
               <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center gap-2.5">
                 <Code2 className="text-cyan-muted dark:text-cyan" size={22} />
                 Full-Stack Architecture & Development
@@ -79,7 +79,7 @@ export const About = () => {
             className="lg:col-span-5 flex flex-col gap-6"
           >
             {/* Education Card */}
-            <div className="p-6 rounded-2xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 backdrop-blur-xl shadow-sm">
+            <div className="portfolio-card p-6 rounded-2xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-cyan/30 backdrop-blur-xl shadow-sm">
               <div className="flex items-center gap-2.5 mb-4">
                 <div className="p-2 rounded-xl bg-cyan/10 text-cyan-muted dark:text-cyan">
                   <GraduationCap size={20} />
@@ -109,7 +109,7 @@ export const About = () => {
             </div>
 
             {/* Secondary Interests Card */}
-            <div className="p-6 rounded-2xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 backdrop-blur-xl shadow-sm">
+            <div className="portfolio-card p-6 rounded-2xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-cyan/30 backdrop-blur-xl shadow-sm">
               <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-2">
                 <Compass size={15} className="text-cyan-muted dark:text-cyan" />
                 Interests & Problem Solving

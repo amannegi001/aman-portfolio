@@ -32,32 +32,34 @@ export const Certifications = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
-              className="p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 hover:border-cyan/40 transition-all duration-300 flex flex-col justify-between backdrop-blur-xl shadow-sm"
+              className="h-full"
             >
-              <div>
-                <div className="flex items-center justify-between gap-4 mb-4">
-                  <div className="p-2.5 rounded-2xl bg-slate-100 dark:bg-navy-800 text-cyan-muted dark:text-cyan">
-                    <Award size={22} />
+              <div className="portfolio-card h-full p-6 sm:p-8 rounded-3xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-cyan/30 flex flex-col justify-between backdrop-blur-xl shadow-sm">
+                <div>
+                  <div className="flex items-center justify-between gap-4 mb-4">
+                    <div className="p-2.5 rounded-2xl bg-slate-100 dark:bg-navy-800 text-cyan-muted dark:text-cyan">
+                      <Award size={22} />
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-cyan/10 text-cyan-muted dark:text-cyan text-xs font-mono font-medium border border-cyan/20">
+                      {cert.badgeText}
+                    </span>
                   </div>
-                  <span className="px-3 py-1 rounded-full bg-cyan/10 text-cyan-muted dark:text-cyan text-xs font-mono font-medium border border-cyan/20">
-                    {cert.badgeText}
-                  </span>
+
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+                    {cert.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    {cert.organization}
+                  </p>
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-                  {cert.title}
-                </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                  {cert.organization}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
-                <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
-                  <ShieldCheck size={14} className="text-cyan-muted dark:text-cyan" />
-                  Verified Credential
-                </span>
-                <span>{cert.year}</span>
+                <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs font-mono text-slate-500 dark:text-slate-400">
+                  <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
+                    <ShieldCheck size={14} className="text-cyan-muted dark:text-cyan" />
+                    Verified Credential
+                  </span>
+                  <span>{cert.year}</span>
+                </div>
               </div>
             </motion.div>
           ))}

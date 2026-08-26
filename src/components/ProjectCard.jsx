@@ -3,25 +3,18 @@ import { Github, ExternalLink, Layers, CheckCircle2, Clock, Users, ArrowRight, N
 import { motion } from 'framer-motion';
 
 export const ProjectCard = ({ project, index, onViewArchitecture, hasArchitecture }) => {
-  const isFeatured = project.featured;
-
   return (
     <motion.article
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      className={`relative rounded-3xl p-6 sm:p-8 md:p-10 transition-all duration-300 group backdrop-blur-xl ${
-        isFeatured
-          ? 'bg-white/90 dark:bg-navy-900/80 border border-cyan/40 dark:border-cyan/30 shadow-xl shadow-cyan/5 hover:border-cyan/60'
-          : 'bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20'
-      }`}
+      whileHover={{
+        y: -8,
+        scale: 1.015,
+        transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] }
+      }}
+      className="project-card-interactive p-6 sm:p-8 md:p-10 rounded-3xl bg-white/80 dark:bg-navy-900/60 border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-cyan/40 backdrop-blur-xl shadow-sm"
     >
-      {/* Background radial glow for featured card */}
-      {isFeatured && (
-        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan/5 dark:bg-cyan/10 rounded-full blur-3xl pointer-events-none -z-10" />
-      )}
-
       {/* Top Meta Bar: Status / Badge & Actions */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div className="flex flex-wrap items-center gap-2">
